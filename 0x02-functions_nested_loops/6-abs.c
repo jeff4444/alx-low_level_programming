@@ -2,7 +2,7 @@
 /**
  * _abs - computes absolute value of an integer
  * @n: integer input
- * return: the new n
+ * Return: the new n
  */
 int _abs(int n)
 {
