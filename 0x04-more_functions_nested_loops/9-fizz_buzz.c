@@ -4,7 +4,8 @@
  * if number is a multiple of 3 and 5, print FizzBuzz
  * if number is a nmultiple of 3, print Fizz
  * if number is a multiple of 5, print Buzz
- * Return: 0 Always
+ *
+ * Return: Always 0
  */
 int main(void)
 {
