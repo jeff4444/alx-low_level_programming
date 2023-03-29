@@ -5,7 +5,7 @@
  */
 void print_rev(char *s)
 {
-	int len;
+	int i, len;
 
 	len = 0;
 
@@ -15,8 +15,6 @@ void print_rev(char *s)
 		s++;
 	}
 	s--;
-	
-	int i;
 
 	for (i = len; i > 0; i--)
 	{
