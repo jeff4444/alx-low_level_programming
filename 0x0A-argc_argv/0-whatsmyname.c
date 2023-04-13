@@ -7,11 +7,14 @@
  */
 int main(int argc, char* argv[])
 {
-	int i, j;
+	char* s = argv[0];
+	
+	int i = 0;
 
-	while (argv[0][0] != '\0')
+	while (s[i]!= '\0')
 	{
-		_putchar(*argv[0][0]);
+		_putchar(s[i]);
+		i++;
 	}
 	return 0;
 }
