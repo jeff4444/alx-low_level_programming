@@ -12,12 +12,22 @@ char *str_concat(char *s1, char *s2)
 {
 	int len, i, j;
 	char *s;
-	
+
 	len = 0;
 	i = 0;
 	if (s1 == NULL && s2 == NULL)
 	{
 		return (NULL);
+	}
+	else if (s1 == NULL)
+	{
+		s = s2;
+		return (s);
+	}
+	else if (s2 == NULL)
+	{
+		s = s1;
+		return (s);
 	}
 
 	while (s1[len] != '\0')
