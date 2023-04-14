@@ -21,10 +21,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		len1++;
 	}
 
-	s = malloc(n + (sizeof(char) * len1) + 1);
+	s = malloc(n + (sizeof(char) * (len1 + 1)));
 
 	if (s == NULL)
+	{
+		fprintf(stderr, "Not enough memory left!\n");
 		return (NULL);
+	}
 
 	for (i = 0; i < len1; i++)
 	{
