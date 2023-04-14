@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * create_array - creates an array of chararcters and initializes it with a specific char
+ * create_array - creates an array of
+ * chararcters and initializes it with a specific char
  * @size: size of array
  * @c: character to be used
  *
@@ -12,21 +13,25 @@ char *create_array(unsigned int size, char c)
 {
 	char *s;
 	int i, j;
-		
-	j = size/sizeof(int);
+
+	j = size / sizeof(int);
 
 	if (j == 0)
 	{
 		return (NULL);
 	}
 
-	s = malloc(size + sizeof(char));
+	s = malloc(size);
+	if (s == NULL)
+	{
+		fprintf(stderr, "Not enough memory left!\n");
+		return (NULL);
+	}
 
-	for (i = 0; i < j; i++)
+	for (i = 0; i < (int)size; i++)
 	{
 		s[i] = c;
 	}
-	s[i] = '\0';
 
 	return (s);
 }
