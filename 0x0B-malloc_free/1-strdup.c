@@ -5,12 +5,12 @@
  * _strdup - creates an allocated space in memory
  *  with a string copy
  *  @str: string used
- *  
+ *
  *  Return: string copy
  */
 char *_strdup(char *str)
 {
-	int len;
+	int len, i;
 	char *s;
 
 	len = 0;
@@ -26,10 +26,9 @@ char *_strdup(char *str)
 		return (NULL);
 	}
 
-	while (len > 0)
+	for (i = 0; i < (len + 1); i++)
 	{
-		s[len] = str[len];
-		len--;
+		s[i] = str[i];
 	}
 
 	return (s);
