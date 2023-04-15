@@ -56,17 +56,15 @@ int _atoi(char *s)
 int main(int argc, char *argv[])
 {
         int sum, i, j;
-	char *s;
 
 	sum = 0;
 	j = 0;
 
 	for (i = 1; i < argc; i++)
 	{
-		s = argv[i];
-		while (s[j] != '\0')
+		while (argv[i][j] != '\0')
 		{
-			if (s[j] < '0' || s[j] > '9')
+			if (argv[i][j] < '0' || argv[i][j] > '9')
 			{
 				printf("Error");
 				return (1);
