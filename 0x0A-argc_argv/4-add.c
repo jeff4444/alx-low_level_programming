@@ -56,6 +56,7 @@ int _atoi(char *s)
 int main(int argc, char *argv[])
 {
         int sum, i, j;
+	char *s;
 
 	sum = 0;
 	j = 0;
