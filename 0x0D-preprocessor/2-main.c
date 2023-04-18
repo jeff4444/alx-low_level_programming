@@ -4,7 +4,7 @@
  *
  * Return: 0 (Success), 1 (FAIL)
  */
-int main()
+int main(void)
 {
 	if (__FILE__ == NULL)
 		return (1);
