@@ -33,6 +33,6 @@ int main(int argc, char *argv[])
 		exit(99);
 	}
 
-	printf("%d\n", (*get_op_func(argv[2]))(a, b));
+	printf("%d\n", (get_op_func(argv[2]))(a, b));
 	return (0);
 }

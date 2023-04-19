@@ -6,9 +6,9 @@
  *
  * Return: one function in 3-op_functions
  */
-int (*get_op_func(char *s))(int a, int b)
+int (*get_op_func(char *s))(int, int)
 {
-	opt_ops[] = {
+	op_t ops[] = {
 		{"+", op_add},
 		{"-", op_sub},
 		{"*", op_mul},
@@ -20,8 +20,7 @@ int (*get_op_func(char *s))(int a, int b)
 
 	for (i = 0; i < 5; i++)
 	{
-		if (ops[i][0] == s)
-			return (ops[i][1]);
+		if ((ops + i)->op == s)
+			return ((ops + i)->f);
 	}
-	return (NULL);
 }
