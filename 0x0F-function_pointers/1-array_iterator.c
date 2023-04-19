@@ -11,16 +11,14 @@
  */
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
-	int len, i;
+	int i;
 
 	if (array == NULL)
 	{
-		array = malloc(size);
+		array = malloc(sizeof(int) * size);
 	}
 
-	len = size / sizeof(int);
-
-	for (i = 0; i < len; i++)
+	for (i = 0; i < size; i++)
 	{
 		action(array[i]);
 	}
