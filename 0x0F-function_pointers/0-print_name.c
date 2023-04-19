@@ -2,7 +2,7 @@
 /**
  * print_name - prints a name
  * @name: name
- * @f: function to print name
+ * @f(char *): function to print name
  */
 void print_name(char *name, void (*f)(char *))
 {
