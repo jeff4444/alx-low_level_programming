@@ -22,14 +22,14 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 
-	if (b == 0 && (argv[2] == "/" || argv[2] == "%"))
+	if (b == 0 && (argv[2][0] == '/' || argv[2][0] == '%'))
 	{
 		printf("Error\n");
 		exit(100);
 	}
 
-	if (argv[2] != "+" && b != "-" && argv[2] != "/" \
-			&& argv[2] != "%" && argv[2] != "*")
+	if (argv[2][0] != '+' && argv[2][0] != '-' && argv[2][0] != '/' \
+			&& argv[2][0] != '%' && argv[2][0] != '*')
 	{
 		printf("Error\n");
 		exit(99);
