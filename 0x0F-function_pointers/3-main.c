@@ -1,5 +1,6 @@
 #include "3-calc.h"
 #include <stdio.h>
+#include <stdlib.h>
 /**
  * main - final main
  * @argc: number of CL arguments
@@ -27,7 +28,8 @@ int main(int argc, char *argv[])
 		exit(100);
 	}
 
-	if (argv[2] != "+" && b != "-" && b != "/" && b != "%" && b != "*")
+	if (argv[2] != "+" && b != "-" && argv[2] != "/" \
+			&& argv[2] != "%" && argv[2] != "*")
 	{
 		printf("Error\n");
 		exit(99);
