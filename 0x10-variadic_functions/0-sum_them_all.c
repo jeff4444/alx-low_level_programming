@@ -3,6 +3,8 @@
 /**
  * sum_them_all - sums all parameters
  * @n: number of arguments
+ *
+ * Return: sum (Sucess) or 0 (Fail)
  */
 int sum_them_all(const unsigned int n, ...)
 {
