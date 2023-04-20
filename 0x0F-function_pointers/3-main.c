@@ -11,7 +11,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int a, b, res;
+	int a, b;
 
 	a = atoi(argv[1]);
 	b = atoi(argv[3]);
@@ -27,12 +27,13 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(100);
 	}
-	res = (get_op_func(argv[2]))(a, b);
-	if (res == NULL)
+
+	if (argv[2][0] != '+' && argv[2][0] != '-' && argv[2][0] != '/' &&\
+		       	argv[2][0] != '/' && argv[2][0] != '%')
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	printf("%d\n", res);
+	printf("%d\n", (get_op_func(argv[2]))(a, b));
 	return (0);
 }
