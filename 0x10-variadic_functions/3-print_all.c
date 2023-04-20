@@ -17,7 +17,7 @@ void print_all(const char * const format, ...)
 
 	i = 0;
 
-	if (format)
+	while (format)
 	{
 		while (format[i] != '\0')
 		{
@@ -46,6 +46,7 @@ void print_all(const char * const format, ...)
 			}
 			i++;
 		}
+		break;
 	}
 	va_end(args);
 
