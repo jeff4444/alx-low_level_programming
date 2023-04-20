@@ -17,7 +17,7 @@ void print_all(const char * const format, ...)
 
 	i = 0;
 
-	if (format != NULL)
+	if (format)
 	{
 		while (format[i] != '\0')
 		{
