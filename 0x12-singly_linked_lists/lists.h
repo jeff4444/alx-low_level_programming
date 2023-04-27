@@ -11,7 +11,7 @@
 struct node
 {
 	char *str;
-	int len;
+	unsigned int len;
 	struct node *next;
 };
 
