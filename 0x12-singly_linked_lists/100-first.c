@@ -1,13 +1,13 @@
 #include <stdio.h>
+
+void before_main() __attribute__((constructor));
 /**
- * main - prints a string
+ * before_main - prints a string
  *
- * Return: 0
+ * Return: none
  */
-int main(void)
+void before_main()
 {
 	printf("You're beat! and yet, you must allow,\n");
 	printf("I bore my house upon my back!\n");
-
-	return (0);
 }
