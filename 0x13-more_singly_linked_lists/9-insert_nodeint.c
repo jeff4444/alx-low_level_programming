@@ -19,7 +19,7 @@ listint_t *insert_nodeint_at_index(listint_t **head,
 	if (newNode == NULL)
 		return (NULL);
 	newNode->n = n;
-	for (i = 0; i < idx; i++)
+	for (i = 1; i < idx; i++)
 	{
 		if (h == NULL)
 			return (NULL);
