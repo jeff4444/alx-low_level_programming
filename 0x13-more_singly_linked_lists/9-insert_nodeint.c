@@ -25,6 +25,12 @@ listint_t *insert_nodeint_at_index(listint_t **head,
 			return (NULL);
 		h = h->next;
 	}
+	if (idx == 0)
+	{
+		newNode->next = *head;
+		*head = newNode;
+		return (newNode);
+	}
 	temp = h->next;
 	h->next = newNode;
 	newNode->next = temp;
