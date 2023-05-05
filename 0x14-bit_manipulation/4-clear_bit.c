@@ -10,6 +10,8 @@ int clear_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned long int text = 1;
 
+	if (index > 63)
+		return (-1);
 	while (index--)
 	{
 		text *= 2;
