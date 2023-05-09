@@ -1,4 +1,9 @@
 #include "main.h"
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdlib.h>
 /**
  * read_textfile - reads a text file and prints it
  * @filename: filename
@@ -11,7 +16,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	ssize_t i;
 	char *buffer;
 
-	if (filname == NULL)
+	if (filename == NULL)
 		return (0);
 	file = open(filename, O_RDONLY);
 	if (file == -1)
