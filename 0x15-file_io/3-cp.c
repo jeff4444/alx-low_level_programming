@@ -9,7 +9,7 @@
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to, cl_to, cl;
-	ssize_t len1;
+	ssize_t len1, len2;
 	char *buffer;
 
 	if (argc != 2)
@@ -37,12 +37,33 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 	len1 = read(fd_from, buffer, 1024);
+
+        if (len1 == -1)
+        {
+                dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[0]);
+                exit(98);
+        }
 	while (len1 == 1024)
 	{
-		write(fd_to, buffer, 1024);
+		len2 = write(fd_to, buffer, 1024);
+		if (len2 == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[1]);
+			exit(99);
+		}
 		len1 = read(fd_from, buffer, 1024);
+		if (len1 == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[0]);
+			exit(98);
+		}
 	}
-	write(fd_to, buffer, strlen(buffer));
+	len2 = write(fd_to, buffer, strlen(buffer));
+	if (len2 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[1]);
+		exit(99);
+	}
 	cl_to = close(fd_to);
 	if (cl_to == -1)
 	{
