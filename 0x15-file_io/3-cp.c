@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 {
 	int fd_from, fd_to, cl_to, cl;
 	ssize_t len1, len2;
-	char *buffer;
+	char buffer[1024];
 
 	if (argc != 3)
 	{
@@ -61,28 +61,17 @@ int main(int argc, char *argv[])
 	check_error(fd_from, 0, argv);
 	fd_to = creat(argv[2], S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
 	check_error(0, fd_to, argv);
-	buffer = malloc(1024);
-	if (buffer == NULL)
-	{
-		close(fd_to);
-		close(fd_from);
-		return (0);
-	}
-	len1 = read(fd_from, buffer, 1024);
-	if (len1 == -1)
-		check_error(len1, 0, argv);
+
+	len1 = 1024;
 	while (len1 == 1024)
 	{
+		len1 = read(fd_from, buffer, sizeof(buffer));
+		if (len1 == -1)
+			check_error(-1, 0, argv);
 		len2 = write(fd_to, buffer, 1024);
 		if (len2 == -1)
 			check_error(0, -1, argv);
-		len1 = read(fd_from, buffer, 1024);
-		if (len1 == -1)
-			check_error(-1, 0, argv);
 	}
-	len2 = write(fd_to, buffer, strlen(buffer));
-	if (len2 == -1)
-		check_error(0, len2, argv);
 	cl_to = close(fd_to);
 	check_close(fd_to, cl_to);
 	cl = close(fd_from);
