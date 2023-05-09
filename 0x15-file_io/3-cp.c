@@ -68,16 +68,20 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 	len1 = read(fd_from, buffer, 1024);
-	check_error(len1, 0, argv);
+	if (len1 == -1)
+		check_error(len1, 0, argv);
 	while (len1 == 1024)
 	{
 		len2 = write(fd_to, buffer, 1024);
-		check_error(0, len2, argv);
+		if (len2 == -1)
+			check_error(0, -1, argv);
 		len1 = read(fd_from, buffer, 1024);
-		check_error(len1, 0, argv);
+		if (len1 == -1)
+			check_error(-1, 0, argv);
 	}
 	len2 = write(fd_to, buffer, strlen(buffer));
-	check_error(0, len2, argv);
+	if (len2 == -1)
+		check_error(0, len2, argv);
 	cl_to = close(fd_to);
 	check_close(fd_to, cl_to);
 	cl = close(fd_from);
