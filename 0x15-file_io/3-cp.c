@@ -28,6 +28,7 @@ void check_error(int file1, int file2, char **argv)
 /**
  * check_close - checks if a file closed
  * @fd: file
+ * @close: close value
  */
 void check_close(int fd, int close)
 {
