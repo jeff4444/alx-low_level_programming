@@ -5,7 +5,46 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <sys/stat.h>
+/**
+ * check_error - checks for errors
+ * @file1: file one data
+ * @file2: file two data
+ * @argv: list of cmd line args
+ */
+void check_error(int file1, int file2, char **argv)
+{
+	if (file1 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[1]);
+		exit(98);
+	}
+	if (file2 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
+}
 
+/**
+ * check_close - checks if a file closed
+ * @fd: file
+ */
+void check_close(int fd, int close)
+{
+	if (close == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
+}
+
+
+/**
+ * main - copies one file to another
+ * @argc: number of cmd line args
+ * @argv: list of cmd line args
+ * Return: 0 (Success)
+ */
 int main(int argc, char *argv[])
 {
 	int fd_from, fd_to, cl_to, cl;
@@ -18,17 +57,9 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	fd_from = open(argv[1], O_RDONLY);
-	if (fd_from == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[1]);
-		exit(98);
-	}
+	check_error(fd_from, 0, argv);
 	fd_to = creat(argv[2], S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	if (fd_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+	check_error(0, fd_to, argv);
 	buffer = malloc(1024);
 	if (buffer == NULL)
 	{
@@ -37,44 +68,19 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 	len1 = read(fd_from, buffer, 1024);
-
-        if (len1 == -1)
-        {
-                dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[1]);
-                exit(98);
-        }
+	check_error(len1, 0, argv);
 	while (len1 == 1024)
 	{
 		len2 = write(fd_to, buffer, 1024);
-		if (len2 == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-			exit(99);
-		}
+		check_error(0, len2, argv);
 		len1 = read(fd_from, buffer, 1024);
-		if (len1 == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from %s\n", argv[1]);
-			exit(98);
-		}
+		check_error(len1, 0, argv);
 	}
 	len2 = write(fd_to, buffer, strlen(buffer));
-	if (len2 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
-	}
+	check_error(0, len2, argv);
 	cl_to = close(fd_to);
-	if (cl_to == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_to);
-		exit(100);
-	}
+	check_close(fd_to, cl_to);
 	cl = close(fd_from);
-	if (cl == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd_from);
-		exit(100);
-	}
-	return (0);	
+	check_close(fd_from, cl);
+	return (0);
 }
