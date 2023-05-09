@@ -68,7 +68,7 @@ int main(int argc, char *argv[])
 		len1 = read(fd_from, buffer, sizeof(buffer));
 		if (len1 == -1)
 			check_error(-1, 0, argv);
-		len2 = write(fd_to, buffer, 1024);
+		len2 = write(fd_to, buffer, len1);
 		if (len2 == -1)
 			check_error(0, -1, argv);
 	}
