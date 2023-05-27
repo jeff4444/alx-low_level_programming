@@ -16,7 +16,7 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 	/* your code goes there */
 	printf("Last digit of %d ", n);
-	while (n > (-10 * fact) && n < (10 * fact))
+	while ((n > (-10 * fact)) && (n < (10 * fact)))
 		fact *= 10;
 	if (fact != 1)
 		first = n / fact;
