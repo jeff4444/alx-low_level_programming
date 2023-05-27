@@ -10,16 +10,17 @@
  */
 int main(void)
 {
-	int n, fact = 1, lastDigit;
+	int n, fact = 1, lastDigit, first = 0;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
 	/* your code goes there */
 	printf("Last digit of %d ", n);
-	while (n > (-1 * fact) && n < (10 * fact))
+	while (n > (-10 * fact) && n < (10 * fact))
 		fact *= 10;
-	n -= (n / fact) * fact;
-	lastDigit = n;
+	if (fact != 1)
+		first = n / fact;
+	lastDigit = n - (first * fact);
 	if (lastDigit == 0)
 		printf("is %d and is 0\n", lastDigit);
 	else if (lastDigit < 6)
