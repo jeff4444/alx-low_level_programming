@@ -20,6 +20,13 @@ int main(void)
 		fact *= 10;
 	if (fact != 1)
 		first = n / fact;
+	n = n - (first * fact);
+	fact = 1;
+	first = 0;
+	while ((n < (-10 * fact)) || (n > (10 * fact)))
+		fact *= 10;
+	if (fact != 1)
+		first = n / fact;
 	lastDigit = n - (first * fact);
 	if (lastDigit == 0)
 		printf("is %d and is 0\n", lastDigit);
