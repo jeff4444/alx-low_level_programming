@@ -6,13 +6,13 @@
  */
 int main(void)
 {
-	int ch = 97;
+	char ch = 'a';
 
-	for (;ch < 123; ch++)
-		putchar(ch + '0');
-	ch = 65;
-	for (; ch < 91; ch++)
-		putchar(ch + '0');
+	for ( ; ch <= 'z'; ch++)
+		putchar(ch);
+	ch = 'A';
+	for ( ; ch <= 'Z'; ch++)
+		putchar(ch);
 	putchar('\n');
 	return (0);
 }

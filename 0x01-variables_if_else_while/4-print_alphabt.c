@@ -6,12 +6,12 @@
  */
 int main(void)
 {
-	int ch = 97;
+	char ch = 'a';
 
-	for (;ch < 123; ch++)
+	for ( ; ch <= 'z'; ch++)
 	{
-		if (ch != 101 && ch != 113)
-			putchar(ch + '0');
+		if (ch != 'e' && ch != 'q')
+			putchar(ch);
 	}
 	putchar('\n');
 	return (0);
