@@ -22,7 +22,7 @@ void add_node(hash_node_t **list, hash_node_t *item)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *item;
-	unsigned long int index = key_index(key, ht->size);
+	unsigned long int index = key_index((unsigned char *)key, ht->size);
 
 	item = malloc(sizeof(hash_node_t));
 	if (item == NULL)
