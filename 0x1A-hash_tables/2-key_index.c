@@ -12,5 +12,5 @@ unsigned long int key_index(const unsigned char *key, unsigned long int size)
 
 	if (index < size)
 		return (index);
-	return (NULL);
+	return (index);
 }
