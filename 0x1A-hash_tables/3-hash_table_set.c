@@ -13,6 +13,27 @@ void add_node(hash_node_t **list, hash_node_t *item)
 }
 
 /**
+ * _strcmp - compares two strings
+ * @s1: string1
+ * @s2: string 2
+ * Return: int
+ */
+
+int _strcmp(char *s1, char *s2)
+{
+	int i = 0;
+
+	while (s2[i] != '\0')
+	{
+		if (s2[i] != s1[i])
+			return (0);
+		i++;
+	}
+	if (s1[i] != '\0')
+		return (0);
+	return (1);
+}
+/**
  * hash_table_set - adds an element to the hash table
  * @ht: hash table
  * @key: key
@@ -24,7 +45,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *item;
 	unsigned long int index = key_index((unsigned char *)key, ht->size);
 
-	if ((key == NULL) || strcmp(key, ""))
+	if ((key == NULL) || _strcmp(key, ""))
 		return (0);
 	item = malloc(sizeof(hash_node_t));
 	if (item == NULL)
