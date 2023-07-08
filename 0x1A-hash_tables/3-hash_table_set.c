@@ -19,7 +19,7 @@ void add_node(hash_node_t **list, hash_node_t *item)
  * Return: int
  */
 
-int _strcmp(char *s1, char *s2)
+int _strcmp(const char *s1, const char *s2)
 {
 	int i = 0;
 
