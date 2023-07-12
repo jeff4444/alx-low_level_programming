@@ -45,8 +45,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *item;
 	unsigned long int index = key_index((unsigned char *)key, ht->size);
 
-	if (ht == NULL)
-		return (0);
 	if ((key == NULL) || _strcmp(key, ""))
 		return (0);
 	item = malloc(sizeof(hash_node_t));
