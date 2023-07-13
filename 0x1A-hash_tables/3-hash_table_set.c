@@ -8,7 +8,6 @@
  */
 void add_node(hash_node_t **list, hash_node_t *item)
 {
-	item->next = *list;
 	*list = item;
 }
 
