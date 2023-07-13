@@ -8,6 +8,18 @@
  */
 void add_node(hash_node_t **list, hash_node_t *item)
 {
+	hash_node_t *cur = *list;
+
+	while (cur != NULL)
+	{
+		if (_strcmp(cur->key, item->key))
+		{
+			strcpy(cur->value, item->value)
+			return;
+		}
+		cur = cur->next;
+	}
+	item->next = *list;
 	*list = item;
 }
 
