@@ -37,4 +37,5 @@ unsigned long int key_index(const unsigned char *key, unsigned long int size);
 int hash_table_set(hash_table_t *ht, const char *key, const char *value);
 char *hash_table_get(const hash_table_t *ht, const char *key);
 int _strcmp(const char *s1, const char *s2);
+void hash_table_print(const hash_table_t *ht);
 #endif
