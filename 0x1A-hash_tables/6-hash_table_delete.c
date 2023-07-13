@@ -8,9 +8,8 @@ void free_node(hash_node_t *node)
 {
 	hash_node_t *cur = node;
 
-	while (node)
+	while ((cur = node))
 	{
-		cur = node;
 		node = node->next;
 		free(cur->key);
 		free(cur->value);
