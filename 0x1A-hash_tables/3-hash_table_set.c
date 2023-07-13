@@ -54,10 +54,11 @@ int _strcmp(const char *s1, const char *s2)
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *item;
-	unsigned long int index = key_index((unsigned char *)key, ht->size);
+	unsigned long int index;
 
 	if (ht == NULL)
 		return (0);
+	index = key_index((unsigned char *)key, ht->size);
 	if ((key == NULL) || _strcmp(key, ""))
 		return (0);
 	item = malloc(sizeof(hash_node_t));
