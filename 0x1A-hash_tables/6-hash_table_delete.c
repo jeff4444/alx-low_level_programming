@@ -6,10 +6,11 @@
  */
 void free_node(hash_node_t *node)
 {
-	hash_node_t *cur;
+	hash_node_t *cur = node;
 
-	while ((cur = node))
+	while (node)
 	{
+		cur = node;
 		node = node->next;
 		free(cur->key);
 		free(cur->value);

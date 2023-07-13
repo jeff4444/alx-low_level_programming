@@ -14,6 +14,8 @@ void add_node(hash_node_t **list, hash_node_t *item)
 	{
 		if (_strcmp(cur->key, item->key))
 		{
+			free(cur->value);
+			cur->value = malloc(sizeof(char) * (1 + strlen(item->value)));
 			strcpy(cur->value, item->value);
 			return;
 		}
@@ -64,11 +66,13 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	item = malloc(sizeof(hash_node_t));
 	if (item == NULL)
 		return (0);
-	item->key = malloc(sizeof(char) * strlen(key));
+	item->key = NULL;
+	item->key = NULL;
+	item->key = malloc(sizeof(char) * (1 + strlen(key)));
 	if (item->key == NULL)
 		return (0);
 	strcpy(item->key, key);
-	item->value = malloc(sizeof(char) * strlen(value));
+	item->value = malloc(sizeof(char) * (1 + strlen(value)));
 	if (item->value == NULL)
 		return (0);
 	strcpy(item->value, value);
