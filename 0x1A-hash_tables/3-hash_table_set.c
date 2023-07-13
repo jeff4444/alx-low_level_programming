@@ -14,7 +14,7 @@ void add_node(hash_node_t **list, hash_node_t *item)
 	{
 		if (_strcmp(cur->key, item->key))
 		{
-			strcpy(cur->value, item->value)
+			strcpy(cur->value, item->value);
 			return;
 		}
 		cur = cur->next;
