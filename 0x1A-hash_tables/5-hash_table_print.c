@@ -17,10 +17,10 @@ void hash_table_print(const hash_table_t *ht)
 		if (ht->array[i] != NULL)
 		{
 			if (on)
-				printf(", ")
+				printf(", ");
 			printf("'%s': '%s'", ht->array[i]->key, ht->array[i]->value);
 			on = 1;
 		}
 	}
-	print("}");
+	printf("}");
 }	
